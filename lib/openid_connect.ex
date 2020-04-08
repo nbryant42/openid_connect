@@ -269,7 +269,8 @@ defmodule OpenIDConnect do
   end
 
   defp jwk(provider, name) do
-    GenServer.call(name, {:jwk, provider})
+    {:ok, jwk} = GenServer.call(name, {:jwk, provider})
+    jwk
   end
 
   defp config(provider, name) do
